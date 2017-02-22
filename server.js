@@ -13,7 +13,7 @@ app.use(express.static('assets'));
 
 function responder(req, res) {
   // Sending a file to the user's browser
-  res.sendFile(__dirname + '/vicky.html');
+  res.sendFile(__dirname + '/main.html');
   // print message in the server side console
   console.log('got a request');
 };
