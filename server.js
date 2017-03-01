@@ -21,6 +21,10 @@ function responder(req, res) {
 // Get request to / is given to responder function
 app.get('/', responder);
 
+app.get('/vicky',(req,res)=>{
+  res.sendFile(__dirname + '/vicky.html');
+})
+
 function portListener() {
     console.log('Listening on localhost ' + port);
 };
