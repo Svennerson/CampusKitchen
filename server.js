@@ -23,16 +23,31 @@ function responder(req, res) {
   res.sendFile(__dirname + '/title.html');
   // print message in the server side console
   console.log('got a request');
-};
+}
 
 // Get request to / is given to responder function
 app.get('/', responder);
 
 app.get('/vicky',(req,res)=>{
   res.sendFile(__dirname + '/vicky.html');
-})
+});
 
 app.get('/shiftleader',(req,res)=>{
+  var cursor = db.collection('Inventory').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err) {
+		return console.log(err);
+	}
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slinventory.ejs', {records: results});
+  });
+});
+
+app.get('/executive',(req,res)=>{
   var cursor = db.collection('Inventory').find();
   // console.log(cursor);  // This has too much info
   // convert to an array to extract the movie data
@@ -42,7 +57,7 @@ app.get('/shiftleader',(req,res)=>{
 
     console.log(results);
     // Render index.ejs
-    res.render('slinventory.ejs', {records: results})
+    res.render('execinventory.ejs', {records: results})
   });
 });
 
@@ -50,12 +65,27 @@ app.post('/addItem', (req, res) => {
   console.log('got Post request');
   console.log(req.body);
   db.collection('Inventory').save(req.body, (err, result) => {
-    if (err)
-      return console.log(err);
+    if (err) {
+		return console.log(err);
+	}
     console.log('saved to database');
+<<<<<<< HEAD
     res.redirect('/shiftleader');
   })
 } )
+=======
+    res.redirect('/dean');
+  });
+});
+//=======
+  res.sendFile(__dirname + '/shiftleader.html');
+})
+
+app.get('/executive',(req,res)=>{
+  res.sendFile(__dirname + '/executive.html');
+})
+//>>>>>>> d2c144c1bb641b61f7a460f2e459a2580fb45a12
+>>>>>>> c451a1bb9965fb46c84003f7348832a5734ccfae
 
 function portListener() {
     console.log('Listening on localhost ' + port);
@@ -73,4 +103,4 @@ MongoClient.connect('mongodb://campuskitchen:prohumanitate@ds113630.mlab.com:136
   db = database;
   console.log('Connected to database and listening...');
   http.listen(port, portListener);
-});
+})
