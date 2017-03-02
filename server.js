@@ -80,6 +80,10 @@ app.get('/executive',(req,res)=>{
   res.sendFile(__dirname + '/executive.html');
 })
 
+app.get('/about',  (req,res)=>{
+  res.sendFile(__dirname + '/about.html');
+})
+
 function portListener() {
     console.log('Listening on localhost ' + port);
 };
