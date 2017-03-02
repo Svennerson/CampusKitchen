@@ -13,7 +13,7 @@ app.use(express.static('assets'));
 
 function responder(req, res) {
   // Sending a file to the user's browser
-  res.sendFile(__dirname + '/main.html');
+  res.sendFile(__dirname + '/title.html');
   // print message in the server side console
   console.log('got a request');
 };
@@ -23,6 +23,14 @@ app.get('/', responder);
 
 app.get('/vicky',(req,res)=>{
   res.sendFile(__dirname + '/vicky.html');
+})
+
+app.get('/shiftleader',(req,res)=>{
+  res.sendFile(__dirname + '/shiftLeader.html');
+})
+
+app.get('/executive',(req,res)=>{
+  res.sendFile(__dirname + '/executive.html');
 })
 
 function portListener() {
