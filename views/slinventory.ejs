@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rotten Potatos</title>
+</head>
+<body>
+  <h1>Rotten Potatos</h1>
+
+  <table>
+    <tr>
+        <th>Item name</th>
+        <th>Quantity</th>
+        <th>Units</th>
+        <th>Date</th>
+      </tr>
+    <% for(var i=0; i<records.length; i++) {%>
+      <tr>
+        <td><span><%= records[i].item %></span></td>
+        <td><span><%= records[i].quantity %></span></td>
+        <td><span><%= records[i].units %></span></td>
+        <td><span><%= records[i].date %></span></td>
+    </tr>
+  <% } %>
+  </table>
+
+  <form action="/addItem" method="POST">
+    Item <input type="text" placeholder="item" name="item"><br>
+    Quantity <input type="text" name="quantity"><br>
+    Units <input type="text" name="units"><br>
+    Date <input type="date" name="date"><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <a href="/about">About</a>
+  <a href="/team">The Team</a>
+
+</body>
+</html>
