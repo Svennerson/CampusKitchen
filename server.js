@@ -28,9 +28,6 @@ function responder(req, res) {
 // Get request to / is given to responder function
 app.get('/', responder);
 
-app.get('/vicky',(req,res)=>{
-  res.sendFile(__dirname + '/vicky.html');
-});
 
 app.get('/shiftleader',(req,res)=>{
   var cursor = db.collection('Inventory').find();
@@ -57,26 +54,25 @@ app.get('/executive',(req,res)=>{
 
     console.log(results);
     // Render index.ejs
-    res.render('execinventory.ejs', {records: results})
+    res.render('execinventory.ejs', {records: results});
   });
 });
 
 app.post('/addItem', (req, res) => {
   console.log('got Post request');
   console.log(req.body);
+
   db.collection('Inventory').save(req.body, (err, result) => {
     if (err) {
-		return console.log(err);
-	}
+		    return console.log(err);
+      }
     console.log('saved to database');
     res.redirect('/shiftleader');
   })
-} )
-=======
-    res.redirect('/dean');
-  });
+
 });
-//=======
+
+app.get('/shiftleader',(req,res)=>{
   res.sendFile(__dirname + '/shiftleader.html');
 })
 

@@ -23,6 +23,17 @@
     </tr>
   <% } %>
   </table>
+  <br>
+  <form action="/addItem" method="POST">
+    Item <input type="text" placeholder="item" name="item"><br>
+    Quantity <input type="text" name="quantity"><br>
+    Units <input type="text" name="units"><br>
+    Date <input type="date" name="date"><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <a href="/about">About</a>
+  <a href="/team">The Team</a>
 
 
 </body>
