@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Executive Inventory</title>
+</head>
+<body>
+  <h1>Executive: Inventory</h1>
+
+  <table>
+    <tr>
+        <th>Item name</th>
+        <th>Quantity</th>
+        <th>Units</th>
+        <th>Date</th>
+      </tr>
+    <% for(var i=0; i<records.length; i++) {%>
+      <tr>
+        <td><span><%= records[i].item %></span></td>
+        <td><span><%= records[i].quantity %></span></td>
+        <td><span><%= records[i].units %></span></td>
+        <td><span><%= records[i].date %></span></td>
+    </tr>
+  <% } %>
+  </table>
+
+
+</body>
+</html>
