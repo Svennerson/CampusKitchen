@@ -33,6 +33,7 @@ app.get('/vicky',(req,res)=>{
 })
 
 app.get('/shiftleader',(req,res)=>{
+<<<<<<< HEAD
   var cursor = db.collection('Inventory').find();
   // console.log(cursor);  // This has too much info
   // convert to an array to extract the movie data
@@ -56,6 +57,14 @@ app.post('/addItem', (req, res) => {
     res.redirect('/dean');
   })
 } )
+=======
+  res.sendFile(__dirname + '/shiftLeader.html');
+})
+
+app.get('/executive',(req,res)=>{
+  res.sendFile(__dirname + '/executive.html');
+})
+>>>>>>> d2c144c1bb641b61f7a460f2e459a2580fb45a12
 
 function portListener() {
     console.log('Listening on localhost ' + port);
