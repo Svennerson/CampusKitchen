@@ -69,7 +69,6 @@ app.post('/addItem', (req, res) => {
 		return console.log(err);
 	}
     console.log('saved to database');
-<<<<<<< HEAD
     res.redirect('/shiftleader');
   })
 } )
@@ -84,8 +83,6 @@ app.post('/addItem', (req, res) => {
 app.get('/executive',(req,res)=>{
   res.sendFile(__dirname + '/executive.html');
 })
-//>>>>>>> d2c144c1bb641b61f7a460f2e459a2580fb45a12
->>>>>>> c451a1bb9965fb46c84003f7348832a5734ccfae
 
 function portListener() {
     console.log('Listening on localhost ' + port);
