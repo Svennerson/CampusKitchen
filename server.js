@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 
 // Create an express app
 var app = express();
-
 var http = httpModule.Server(app);
 
 // Tells app that pictures, etc are located in folder
