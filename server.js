@@ -58,6 +58,20 @@ app.get('/executive',(req,res)=>{
   });
 });
 
+app.get('/item',(req,res)=>{
+  var cursor = db.collection('Inventory').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('item.ejs', {records: results});
+  });
+});
+
 app.post('/addItem', (req, res) => {
   console.log('got Post request');
   console.log(req.body);
