@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.0",
+    "bootstrap": "^3.3.7",
     "ejs": "^2.5.6",
     "express": "^4.14.1",
+    "jquery": "^3.1.1",
     "mongodb": "^2.2.24"
   }
 }
