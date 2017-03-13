@@ -28,7 +28,7 @@ function responder(req, res) {
 app.get('/', responder);
 
 
-app.get('/shiftleader',(req,res)=>{
+app.get('/shiftleader/inventory',(req,res)=>{
   var cursor = db.collection('Inventory').find();
   // console.log(cursor);  // This has too much info
   // convert to an array to extract the movie data
@@ -43,7 +43,7 @@ app.get('/shiftleader',(req,res)=>{
   });
 });
 
-app.get('/executive',(req,res)=>{
+app.get('/executive/inventory',(req,res)=>{
   var cursor = db.collection('Inventory').find();
   // console.log(cursor);  // This has too much info
   // convert to an array to extract the movie data
