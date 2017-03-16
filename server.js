@@ -85,6 +85,10 @@ app.post('/addItem', (req, res) => {
 
 });
 
+app.get('/home',(req,res)=>{
+  res.sendFile(__dirname + '/title.html');
+})
+
 app.get('/shiftleader',(req,res)=>{
   res.sendFile(__dirname + '/shiftleader.html');
 })
