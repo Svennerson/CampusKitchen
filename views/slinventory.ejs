@@ -7,7 +7,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  
   <title>Shift Leader</title>
 
 </head>
@@ -31,6 +34,10 @@
   <% } %>
   </table>
   <br>
+  <div data-role="main" class="ui-content">
+    <a href="#addPop" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Add Item</a>
+
+<div data-role="popup" id="addPop" class="ui-content" style="min-width:250px;">
   <form action="/addItem" method="POST">
     Item <input type="text" placeholder="item" name="item"><br>
     Quantity <input type="text" name="quantity"><br>
@@ -38,7 +45,32 @@
     Date <input type="date" name="date"><br>
     <button type="submit">Submit</button>
   </form>
+</div>
+</div>
+<br>
+<div data-role="main" class="ui-content">
+  <a href="#modPop" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Modify Item</a>
 
+<div data-role="popup" id="modPop" class="ui-content" style="min-width:250px;">
+<form action="/modify" method="POST">
+  Item <input type="text" placeholder="item" name="item"><br>
+  Quantity <input type="text" name="quantity"><br>
+  Date <input type="date" name="date"><br>
+  <button type="submit">Submit</button>
+</form>
+</div>
+</div>
+
+<div data-role="main" class="ui-content">
+  <a href="#remPop" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Remove Item</a>
+
+<div data-role="popup" id="remPop" class="ui-content" style="min-width:250px;">
+<form action="/remove" method="POST">
+  Item <input type="text" placeholder="item" name="item"><br>
+  <button type="submit">Submit</button>
+</form>
+</div>
+</div>
   <br>
   <a href="/about">About</a>
 
