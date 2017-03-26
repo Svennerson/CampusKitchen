@@ -75,6 +75,8 @@ app.post('/addItem', (req, res) => {
   console.log('got Post request');
   console.log(req.body);
 
+  req.body.quantity = Number(req.body.quantity);
+
   db.collection('Inventory').save(req.body, (err, result) => {
     if (err) {
 		    return console.log(err);
@@ -84,6 +86,40 @@ app.post('/addItem', (req, res) => {
   })
 
 });
+
+app.post('/modify', (req, res) => {
+  console.log('got Post /update request');
+  console.log(req.body);
+
+  quant = Number(req.body.quantity);
+
+  console.log('Quant: ' + quant);
+
+  db.collection('Inventory').update(
+    {"item":req.body.item} ,
+    {$inc:{"quantity":quant},$set:{"date":req.body.date}} ,
+    (err, result) => {
+      if (err) {
+  		    return console.log(err);
+        }
+      console.log('saved to database');
+      res.redirect('/shiftleader');
+    })
+
+});
+
+app.post('/remove', (req, res) => {
+  console.log('got Post /update request');
+  console.log(req.body);
+  db.collection('Inventory').remove({"item":req.body.item},
+    (err, result) => {
+      if (err) {
+  		    return console.log(err);
+        }
+      console.log('saved to database');
+      res.redirect('/shiftleader');
+    })
+  });
 
 app.get('/shiftleader',(req,res)=>{
   res.sendFile(__dirname + '/shiftleader.html');
