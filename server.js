@@ -98,7 +98,7 @@ app.get('/about',  (req,res)=>{
 })
 
 app.get('/home',(req,res)=>{
-  res.sendFile(__dirname);
+  res.sendFile(__dirname + '/title.html');
 })
 
 function portListener() {
