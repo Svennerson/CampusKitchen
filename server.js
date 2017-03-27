@@ -97,6 +97,10 @@ app.get('/about',  (req,res)=>{
   res.sendFile(__dirname + '/about.html');
 })
 
+app.get('#',(req,res)=>{
+  res.sendFile(__dirname);
+})
+
 function portListener() {
     console.log('Listening on localhost ' + port);
 };
