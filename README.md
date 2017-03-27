@@ -1,6 +1,7 @@
 # CampusKitchen
 App for Campus Kitchen to track inventory and safety regulations.
 
+Spring 2017
 
 Team members:
 
@@ -15,6 +16,7 @@ Elizabeth Krizay
 Mitchell Tague
 
 Vicky Wu
+
 
 
 Name in Heroku: campuskitchenwfu
