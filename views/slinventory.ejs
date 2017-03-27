@@ -10,26 +10,37 @@
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  
+
   <title>Shift Leader</title>
+  <!-- Bootstrap Core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+  <!-- Custom Fonts -->
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" >
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" >
 
 </head>
 <body>
-  <h1>Shift Leader</h1>
-
+  <a href="/about">About</a>
+  <a href="/home">Home</a>
+  <br>
+  <h1>Shift Leader: Inventory</h1>
+  <br>
   <table class="table table-sm">
     <tr>
         <th>Item name</th>
         <th>Quantity</th>
         <th>Units</th>
         <th>Date</th>
+        <th>Log</th>
       </tr>
     <% for(var i=0; i<records.length; i++) {%>
       <tr>
-        <td><a href="/item" class="btn btn-default btn-lg"><i class="fa fa-flag fa-fw"></i> <span class="network-name"><%= records[i].item %></span></a></td>
+        <td><i class="fa fa-flag fa-fw"></i><span><%= records[i].item %></span></td>
         <td><span><%= records[i].quantity %></span></td>
         <td><span><%= records[i].units %></span></td>
         <td><span><%= records[i].date %></span></td>
+        <td><span><%= records[i].mylog %></span></td>
     </tr>
   <% } %>
   </table>
@@ -43,11 +54,12 @@
     Quantity <input type="text" name="quantity"><br>
     Units <input type="text" name="units"><br>
     Date <input type="date" name="date"><br>
+    Log <input type="text" name="mylog"><br>
     <button type="submit">Submit</button>
   </form>
 </div>
 </div>
-<br>
+
 <div data-role="main" class="ui-content">
   <a href="#modPop" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Modify Item</a>
 
@@ -56,6 +68,7 @@
   Item <input type="text" placeholder="item" name="item"><br>
   Quantity <input type="text" name="quantity"><br>
   Date <input type="date" name="date"><br>
+  Log <input type="text" name="mylog"><br>
   <button type="submit">Submit</button>
 </form>
 </div>
@@ -72,7 +85,6 @@
 </div>
 </div>
   <br>
-  <a href="/about">About</a>
 
 
   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

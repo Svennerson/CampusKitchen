@@ -57,7 +57,8 @@ app.get('/executive/inventory',(req,res)=>{
   });
 });
 
-app.get('/item',(req,res)=>{
+//try to show the log just beside the table
+/*app.get('/item',(req,res)=>{
   var cursor = db.collection('Inventory').find();
   // console.log(cursor);  // This has too much info
   // convert to an array to extract the movie data
@@ -69,7 +70,7 @@ app.get('/item',(req,res)=>{
     // Render index.ejs
     res.render('item.ejs', {records: results});
   });
-});
+});*/
 
 app.post('/addItem', (req, res) => {
   console.log('got Post request');
@@ -97,7 +98,8 @@ app.post('/modify', (req, res) => {
 
   db.collection('Inventory').update(
     {"item":req.body.item} ,
-    {$inc:{"quantity":quant},$set:{"date":req.body.date}} ,
+    {$inc:{"quantity":quant},$set:{"date":req.body.date} ,
+     $set: { "mylog":req.body.mylog }},
     (err, result) => {
       if (err) {
   		    return console.log(err);

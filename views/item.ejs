@@ -5,6 +5,10 @@
   <title>Inventory Item</title>
 </head>
 <body>
-  <p>This is where the log for each item will go.</p>
+  <p><% for(var i=0; i<records.length; i++) {%>
+    <tr>
+      <td><span><%= records[i].mylog %></span></td></p>
+    </tr>
+  <% } %>
 </body>
 </html>
