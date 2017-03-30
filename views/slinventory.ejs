@@ -89,7 +89,7 @@
     <td><span><form id="<%='form'+i%>" action="/modify" method="POST">
       <input type="hidden" name="num" value="<%= i %>">
       <button type="button" class="btn btn-primary"id=<%='edit'+i%> onClick="edit(this)">Edit</button></form></span></td>
-    <td><span><form id="<%='form'+i%>" action="/remove" method="POST">
+    <td><span><form id="<%='newReq'+i%>" action="/remove" method="POST">
       <input type="hidden" name="num" value="<%= i %>">
       <button type="button" class="btn btn-danger" id=<%='delete'+i%> onClick="deleteEntry(this)">Delete</button></form></span></td>
   </i>
@@ -98,6 +98,14 @@
 </tbody>
 </table>
 <br>
+<form action="/addItem" method="POST">
+      <h4><dt>Add Item: <input class="form-control form-control-sm" type="text" placeholder="Item" name="item">
+      <input class="form-control form-control-sm"type="text" placeholder="Quantity" name="quantity">
+      <input class="form-control form-control-sm"type="text" placeholder="Units" name="units">
+      <input class="form-control form-control-sm" type="date" placeholder="Date" name="date">
+      <input class="form-control form-control-sm"type="text" placeholder="Log" name="mylog">
+      <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button></dt></h4>
+</form>
 
 <!--
 <div data-role="main" class="ui-content">
@@ -113,15 +121,6 @@
   </form>
 </div>
 </div>-->
-
-<form action="/addItem" method="POST">
-      <h4><dt>Add Item: <input class="form-control form-control-sm" type="text" placeholder="Item" name="item">
-      <input class="form-control form-control-sm"type="text" placeholder="Quantity" name="quantity">
-      <input class="form-control form-control-sm"type="text" placeholder="Units" name="units">
-      <input class="form-control form-control-sm" type="date" placeholder="Date" name="date">
-      <input class="form-control form-control-sm"type="text" placeholder="Log" name="mylog">
-      <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button></dt></h4>
-</form>
 
 <!--<div data-role="main" class="ui-content">
   <a href="#modPop" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Modify Item</a>
@@ -158,8 +157,8 @@ function deleteEntry(button) {
     // get the number in the button id. It matches the number in the id of the
     // input element we need
     var rownum = button.id.match(/\d+/)[0];  // Extract the number from string 'editNUM'
-    var form = document.getElementById('form'+rownum);
-    form.submit();
+    var newReq = document.getElementById('newReq'+rownum);
+    newReq.submit();
     console.log('submitted form');
 }
 
