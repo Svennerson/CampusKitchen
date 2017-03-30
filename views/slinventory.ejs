@@ -1,32 +1,49 @@
-<!DOCTYPE html><!-- Latest compiled and minified CSS -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  -->
-  <title>Shift Leader: Inventory</title>
-  <!-- Bootstrap Core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <!-- Custom Fonts -->
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" >
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" >
-  <style>
-  body {
-      padding-top: 50px;
-      /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-  }
+    <title>Campus Kitchen Shift Leader</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/landing-page.css" >
+
+    <!-- DataTables CSS -->
+    <link href="../datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" >
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
   </style>
+
 </head>
 <body>
   <!-- Navigation -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+      <div class="container topnav">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -35,11 +52,11 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/home">Home</a>
+              <a class="navbar-brand topnav" href="/home">Home</a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav navbar-right">
                   <li>
                       <a href="/about">About</a>
                   </li>
@@ -49,172 +66,151 @@
       </div>
       <!-- /.container -->
   </nav>
-<div class="col-lg-12 text-center">
-<h1>Shift Leader: Inventory</h1>
-<br>
-</div>
-<table class="table table-hover table table-sm">
-  <thead>
-    <tr>
-        <th>#</th>
-        <th>Item name</th>
-        <th>Quantity</th>
-        <th>Units</th>
-        <th>Date</th>
-        <th>Log</th>
-        <th></th>
-        <th></th>
-    </tr>
-</thead>
-<tbody>
-<% for(var i=0; i<records.length; i++) {%>
-  <tr>
-    <i class="fa fa-flag fa-fw">
-    <th scope="row"><%=i+1%></th>
-    <td><span>
-      <input type="text" name="item" id="<%= 'item'+i %>" readonly value="<%= records[i].item %>">
-    </span></td>
-    <td><span>
-      <input type="text" name="quantity" id="<%= 'quantity'+i %>" readonly value="<%= records[i].quantity %>">
-    </span></td>
-    <td><span>
-      <input type="text" name="units" id="<%= 'units'+i %>" readonly value="<%= records[i].units %>">
-    </span></td>
-    <td><span>
-      <input type="date" name="date" id="<%= 'date'+i %>" readonly value="<%= records[i].date %>">
-    </span></td>
-    <td><span>
-      <input type="text" name="mylog" id="<%= 'mylog'+i %>" readonly value="<%= records[i].mylog %>">
-    </span></td>
-    <td><span><form id="<%='form'+i%>" action="/modify" method="POST">
-      <input type="hidden" name="num" value="<%= i %>">
-      <button type="button" class="btn btn-primary"id=<%='edit'+i%> onClick="edit(this)">Edit</button></form></span></td>
-    <td><span><form id="<%='newReq'+i%>" action="/remove" method="POST">
-      <input type="hidden" name="num" value="<%= i %>">
-      <button type="button" class="btn btn-danger" id=<%='delete'+i%> onClick="deleteEntry(this)">Delete</button></form></span></td>
-  </i>
-  </tr>
-<% } %>
-</tbody>
-</table>
-<br>
-<form action="/addItem" method="POST">
-      <h4><dt>Add Item: <input class="form-control form-control-sm" type="text" placeholder="Item" name="item">
-      <input class="form-control form-control-sm"type="text" placeholder="Quantity" name="quantity">
-      <input class="form-control form-control-sm"type="text" placeholder="Units" name="units">
-      <input class="form-control form-control-sm" type="date" placeholder="Date" name="date">
-      <input class="form-control form-control-sm"type="text" placeholder="Log" name="mylog">
-      <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button></dt></h4>
-</form>
 
-<!--
-<div data-role="main" class="ui-content">
-    <a href="#addPop" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Add Item</a>
-<div data-role="popup" id="addPop" class="ui-content" style="min-width:250px;">
-  <form action="/addItem" method="POST">
-    Item <input type="text" placeholder="item" name="item"><br>
-    Quantity <input type="text" name="quantity"><br>
-    Units <input type="text" name="units"><br>
-    Date <input type="date" name="date"><br>
-    Log <input type="text" name="mylog"><br>
-    <button type="submit">Submit</button>
-  </form>
-</div>
-</div>-->
 
-<!--<div data-role="main" class="ui-content">
-  <a href="#modPop" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Modify Item</a>
-<div data-role="popup" id="modPop" class="ui-content" style="min-width:250px;">
-<form action="/modify" method="POST">
-  Item <input type="text" placeholder="item" name="item"><br>
-  Quantity <input type="text" name="quantity"><br>
-  Date <input type="date" name="date"><br>
-  Log <input type="text" name="mylog"><br>
-  <button type="submit">Submit</button>
-</form>
-</div>
-</div>-->
 
-<!--<div data-role="main" class="ui-content">
-  <a href="#remPop" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Remove Item</a>
-<div data-role="popup" id="remPop" class="ui-content" style="min-width:250px;">
-<form action="/remove" method="POST">
-  Item <input type="text" placeholder="item" name="item"><br>
-  <button type="submit">Submit</button>
-</form>
-</div>
-</div>-->
+<div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Shift Leader Inventory
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Quantity</th>
+                                        <th>Unit</th>
+                                        <th>Date</th>
+                                        <th>Log</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <% for(var i=0; i<records.length; i++) {%>
+                                    <tr>
+                                      <td><span>
+                                        <input type="text" name="item" id="<%= 'item'+i %>" readonly value="<%= records[i].item %>">
+                                      </span></td>
+                                      <td><span>
+                                        <input type="text" name="quantity" id="<%= 'quantity'+i %>" readonly value="<%= records[i].quantity %>">
+                                      </span></td>
+                                      <td><span>
+                                        <input type="text" name="units" id="<%= 'units'+i %>" readonly value="<%= records[i].units %>">
+                                      </span></td>
+                                      <td><span>
+                                        <input type="date" name="date" id="<%= 'date'+i %>" readonly value="<%= records[i].date %>">
+                                      </span></td>
+                                      <td><span>
+                                        <input type="text" name="mylog" id="<%= 'mylog'+i %>" readonly value="<%= records[i].mylog %>">
+                                      </span></td>
+                                      <td><span><form id="<%='form'+i%>" action="/modify" method="POST">
+                                        <input type="hidden" name="num" value="<%= i %>">
+                                        <button type="button" class="btn btn-primary"id=<%='edit'+i%> onClick="edit(this)">Edit</button></form></span></td>
+                                      <td><span><form id="<%='newReq'+i%>" action="/remove" method="POST">
+                                        <input type="hidden" name="num" value="<%= i %>">
+                                        <button type="button" class="btn btn-danger" id=<%='delete'+i%> onClick="deleteEntry(this)">Delete</button></form></span></td>
+                                    </tr>
+                                  <% } %>
+                                </tbody>
+                            </table>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+        </div>
 
-  <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
--->
-<script>
-    var content=[];
-    // Respond to the delete button being clicked.
-    // Get the data
-function deleteEntry(button) {
-    // get the number in the button id. It matches the number in the id of the
-    // input element we need
-    var rownum = button.id.match(/\d+/)[0];  // Extract the number from string 'editNUM'
-    var newReq = document.getElementById('newReq'+rownum);
-    newReq.submit();
-    console.log('submitted form');
-}
+        <form action="/addItem" method="POST">
+              <h4><dt>Add Item: <input class="form-control form-control-sm" type="text" placeholder="Item" name="item">
+              <input class="form-control form-control-sm"type="text" placeholder="Quantity" name="quantity">
+              <input class="form-control form-control-sm"type="text" placeholder="Units" name="units">
+              <input class="form-control form-control-sm" type="date" placeholder="Date" name="date">
+              <input class="form-control form-control-sm"type="text" placeholder="Log" name="mylog">
+              <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button></dt></h4>
+        </form>
 
-function edit(button){
-  // get the number in the button id. It matches the number in the id of the
-      // input element we need
-      var rownum = button.id.match(/\d+/)[0];  // Extract the number from string 'editNUM'
-      var itemName = document.getElementById('item'+rownum);
-      var quantityNum = document.getElementById('quantity'+rownum);
-      var myunits = document.getElementById('units'+rownum);
-      var mydate = document.getElementById('date'+rownum);
-      var mLog = document.getElementById('mylog'+rownum);
+          <!-- jQuery -->
+          <script src="../jquery/jquery.min.js"></script>
 
-      if (button.innerHTML == "Done") {
-        itemName.readOnly = true;
-        quantityNum.readOnly = true;
-        myunits.readOnly = true;
-        mydate.readOnly = true;
-        mLog.readOnly = true;
-        // if the content was edited then update the database
-        if (content[rownum].item != itemName || content[rownum].quantity != quantityNum
-             || content[rownum].units != myunits || content[rownum].date != mydate
-             || content[rownum].myLog != mLog) {
-          var form = document.getElementById('form'+rownum);
-          form.submit();
-          console.log('submitted form');
-        }
-        itemName.style.backgroundColor = "white";
-        quantityNum.style.backgroundColor = "white";
-        myunits.style.backgroundColor = "white";
-        mydate.style.backgroundColor = "white";
-        mLog.style.backgroundColor = "white";
-        button.innerHTML = "Edit";
-      }
-      else {
-        // get the content of titleInput and ratingInput
-        content[rownum] = {item: itemName, quantity: quantityNum,
-                           units: myunits, date:mydate, myLog:mLog};
-        console.log(content[rownum]);
-        // make this input element editable
-        itemName.readOnly = false;
-        quantityNum.readOnly = false;
-        myunits.readOnly = false;
-        mydate.readOnly = false;
-        mLog.readOnly = false;
+              <!-- DataTables JavaScript -->
+          <script src="../datatables/js/jquery.dataTables.min.js"></script>
+          <script src="../datatables-plugins/dataTables.bootstrap.min.js"></script>
+          <script src="../datatables-responsive/dataTables.responsive.js"></script>
+          <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+         <script>
+           $(document).ready(function() {
+               $('#dataTables-example').DataTable({
+                   responsive: true
+               });
+           });
 
-        itemName.style.backgroundColor = "LemonChiffon";
-        quantityNum.style.backgroundColor = "LemonChiffon";
-        myunits.style.backgroundColor = "LemonChiffon";
-        mydate.style.backgroundColor = "LemonChiffon";
-        mLog.style.backgroundColor = "LemonChiffon";
+           var content=[];
+           // Respond to the delete button being clicked.
+           // Get the data
+           function deleteEntry(button) {
+               // get the number in the button id. It matches the number in the id of the
+               // input element we need
+               var rownum = button.id.match(/\d+/)[0];  // Extract the number from string 'editNUM'
+               var newReq = document.getElementById('newReq'+rownum);
+               newReq.submit();
+               console.log('submitted form');
+           }
 
-        button.innerHTML = "Done";
-      }
-}
+           function edit(button){
+             // get the number in the button id. It matches the number in the id of the
+                 // input element we need
+                 var rownum = button.id.match(/\d+/)[0];  // Extract the number from string 'editNUM'
+                 var itemName = document.getElementById('item'+rownum);
+                 var quantityNum = document.getElementById('quantity'+rownum);
+                 var myunits = document.getElementById('units'+rownum);
+                 var mydate = document.getElementById('date'+rownum);
+                 var mLog = document.getElementById('mylog'+rownum);
 
-</script>
+                 if (button.innerHTML == "Done") {
+                   itemName.readOnly = true;
+                   quantityNum.readOnly = true;
+                   myunits.readOnly = true;
+                   mydate.readOnly = true;
+                   mLog.readOnly = true;
+                   // if the content was edited then update the database
+                   if (content[rownum].item != itemName || content[rownum].quantity != quantityNum
+                        || content[rownum].units != myunits || content[rownum].date != mydate
+                        || content[rownum].myLog != mLog) {
+                     var form = document.getElementById('form'+rownum);
+                     form.submit();
+                     console.log('submitted form');
+                   }
+                   itemName.style.backgroundColor = "white";
+                   quantityNum.style.backgroundColor = "white";
+                   myunits.style.backgroundColor = "white";
+                   mydate.style.backgroundColor = "white";
+                   mLog.style.backgroundColor = "white";
+                   button.innerHTML = "Edit";
+                 }
+                 else {
+                   // get the content of titleInput and ratingInput
+                   content[rownum] = {item: itemName, quantity: quantityNum,
+                                      units: myunits, date:mydate, myLog:mLog};
+                   console.log(content[rownum]);
+                   // make this input element editable
+                   itemName.readOnly = false;
+                   quantityNum.readOnly = false;
+                   myunits.readOnly = false;
+                   mydate.readOnly = false;
+                   mLog.readOnly = false;
+
+                   itemName.style.backgroundColor = "LemonChiffon";
+                   quantityNum.style.backgroundColor = "LemonChiffon";
+                   myunits.style.backgroundColor = "LemonChiffon";
+                   mydate.style.backgroundColor = "LemonChiffon";
+                   mLog.style.backgroundColor = "LemonChiffon";
+
+                   button.innerHTML = "Done";
+                 }
+               }
+
+         </script>
 </body>
-</html>

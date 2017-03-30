@@ -37,7 +37,7 @@ app.get('/shiftleader/inventory',(req,res)=>{
 
     console.log(results);
     // Render index.ejs
-    res.render('slinventory.ejs', {records: results});
+    res.render('slinventory', {records: results});
   });
 });
 
