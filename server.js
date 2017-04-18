@@ -3,6 +3,7 @@ var express = require('express');
 var httpModule = require('http');
 const MongoClient = require('mongodb').MongoClient
 var bodyParser = require('body-parser');
+var ObjectId = require('mongodb').ObjectId;
 
 // Create an express app
 var app = express();
@@ -73,35 +74,37 @@ app.post('/addItem', (req, res) => {
 
 app.post('/modify', (req, res) => {
   console.log('got Post /modify request');
-  console.log(req.body);
+  console.log("got this " + req.body.unique_id);
 
-  quant = Number(req.body.quantity);
-  console.log('Quant: ' + quant);
+  //quant = Number(req.body.quantity);
+  //console.log('Quant: ' + quant);
+  console.log("body is " + req.body.item);
 
   db.collection('Inventory').update(
-    {"item":req.body.item} ,
-    {$inc:{"quantity":quant},$set:{"date":req.body.date} ,
-     $set: { "mylog":req.body.mylog }},
-    (err, result) => {
+    {_id: ObjectId(req.body.unique_id)},
+    {$set: {item:req.body.item, quantity:req.body.quantity,
+       date:req.body.date, mylog:req.body.mylog}}
+    ,(err, result) => {
       if (err) {
   		    return console.log(err);
-        }
+      }
       console.log('saved to database');
       res.redirect('/shiftleader/inventory');
-    })
+    });
 });
 
 app.post('/remove', (req, res) => {
   console.log('got Post /remove request');
   console.log(req.body.num);
+
   db.collection('Inventory').remove(
     {_id: ids[req.body.num]},
-    //{"item":req.body.item},
     (err, result) => {
       if (err) {
   		    return console.log(err);
         }
       console.log('saved to database');
+      updateIds();
       res.redirect('/shiftleader/inventory');
     })
   });

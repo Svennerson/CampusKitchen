@@ -26,6 +26,7 @@
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" >
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -91,7 +92,7 @@
                                 <tbody>
                                   <% for(var i=0; i<records.length; i++) {%>
                                     <tr>
-                                      <td><span>
+                                      <td><form id="<%='form'+i%>" action="/modify" method="POST"><span>
                                         <input type="text" name="item" id="<%= 'item'+i %>" readonly value="<%= records[i].item %>">
                                       </span></td>
                                       <td><span>
@@ -106,8 +107,8 @@
                                       <td><span>
                                         <input type="text" name="mylog" id="<%= 'mylog'+i %>" readonly value="<%= records[i].mylog %>">
                                       </span></td>
-                                      <td><span><form id="<%='form'+i%>" action="/modify" method="POST">
-                                        <input type="hidden" name="num" value="<%= i %>">
+                                      <td><span>
+                                        <input type="hidden" name="unique_id" value="<%= records[i]._id %>">
                                         <button type="button" class="btn btn-primary"id=<%='edit'+i%> onClick="edit(this)">Edit</button></form></span></td>
                                       <td><span><form id="<%='newReq'+i%>" action="/remove" method="POST">
                                         <input type="hidden" name="num" value="<%= i %>">
@@ -140,7 +141,10 @@
           <script src="../datatables-plugins/dataTables.bootstrap.min.js"></script>
           <script src="../datatables-responsive/dataTables.responsive.js"></script>
           <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-         <script>
+          <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+
+          </script>
+          <script>
            $(document).ready(function() {
                $('#dataTables-example').DataTable({
                    responsive: true
@@ -162,6 +166,7 @@
            function edit(button){
              // get the number in the button id. It matches the number in the id of the
                  // input element we need
+                 console.log(button.id);
                  var rownum = button.id.match(/\d+/)[0];  // Extract the number from string 'editNUM'
                  var itemName = document.getElementById('item'+rownum);
                  var quantityNum = document.getElementById('quantity'+rownum);
@@ -170,16 +175,18 @@
                  var mLog = document.getElementById('mylog'+rownum);
 
                  if (button.innerHTML == "Done") {
+                   console.log(rownum);
                    itemName.readOnly = true;
                    quantityNum.readOnly = true;
                    myunits.readOnly = true;
                    mydate.readOnly = true;
                    mLog.readOnly = true;
                    // if the content was edited then update the database
-                   if (content[rownum].item != itemName || content[rownum].quantity != quantityNum
-                        || content[rownum].units != myunits || content[rownum].date != mydate
-                        || content[rownum].myLog != mLog) {
+                   if (content[rownum].item != itemName.value || content[rownum].quantity != quantityNum.value
+                        || content[rownum].units != myunits.value || content[rownum].date != mydate.value
+                        || content[rownum].myLog != mLog.value) {
                      var form = document.getElementById('form'+rownum);
+                     console.log(form);
                      form.submit();
                      console.log('submitted form');
                    }
@@ -192,8 +199,9 @@
                  }
                  else {
                    // get the content of titleInput and ratingInput
-                   content[rownum] = {item: itemName, quantity: quantityNum,
-                                      units: myunits, date:mydate, myLog:mLog};
+                   content[rownum] = {item: itemName.value, quantity: quantityNum.value,
+                                      units: myunits.value, date:mydate.value, myLog:mLog.value};
+
                    console.log(content[rownum]);
                    // make this input element editable
                    itemName.readOnly = false;
@@ -211,6 +219,6 @@
                    button.innerHTML = "Done";
                  }
                }
-
-         </script>
+               </script>
 </body>
+</html>
