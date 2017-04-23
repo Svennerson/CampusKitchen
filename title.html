@@ -3,7 +3,7 @@
 
 <head>
 
-
+    <meta name="google-signin-client_id" content="360704991299-nc2iqtvguhpgmecn86pukr85m0tf9kkd.apps.googleusercontent.com">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,7 +37,7 @@
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div id="mydiv" class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
@@ -45,12 +45,17 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand topnav" href="/home">Home</a>
+                <span id="si"><div class="navbar-brand topnav g-signin2" data-width="150" data-height="25" data-longtitle="true" data-theme="dark" data-onsuccess="onSignIn"></div></span>
+                <!--<a id="status" class="navbar-brand topnav"></a>-->
+                <!--<span id="si"><div class="navbar-brand topnav g-signin2" data-width="75" data-height="25" data-onsuccess="onSignIn"></div></span>-->
+
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="/about">About</a>
+                        <!--<a type="hidden" href="#" onclick="signOut();">Sign out</a>-->
                     </li>
                 </ul>
             </div>
@@ -69,14 +74,15 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>Campus Kitchen</h1>
-                        <h3>Please choose one of the following options</h3>
+                        <h3 id="message"></h3>
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="/shiftleader" class="btn btn-default btn-lg"><i class="fa fa-flag fa-fw"></i> <span class="network-name">Shift leader</span></a>
+                                <!--<span id="si"><div class="navbar-brand topnav g-signin2" data-width="240" data-height="50" data-longtitle="true" data-theme="dark" data-onsuccess="onSignIn"></div></span>-->
+                                <a id="slbutton" href="/shiftleader" class="btn btn-default btn-lg"><i class="fa fa-flag fa-fw"></i> <span class="network-name">Shift leader</span></a>
                             </li>
                             <li>
-                                <a href="/executive" class="btn btn-default btn-lg"><i class="fa fa-user fa-fw"></i> <span class="network-name">Executive</span></a>
+                                <a id="invbutton" href="/executive" class="btn btn-default btn-lg"><i class="fa fa-user fa-fw"></i> <span class="network-name">Executive</span></a>
                             </li>
                         </ul>
                     </div>
@@ -88,6 +94,81 @@
 
     </div>
     <!-- /.intro-header -->
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+      setCookie("id", profile.getEmail(), 1);
+
+      var oldButton = document.getElementById("si");
+      var newButton = document.createElement('span');
+      newButton.id = 'so';
+      newButton.innerHTML = '<a href="#" class="navbar-brand topnav" onclick="signOut()"><i class="fa fa-user fa-fw"></i> <span class="network-name">Sign Out</span></a>';
+      oldButton.parentNode.replaceChild(newButton, oldButton);
+      checkCookie();
+    }
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+      document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      location.reload();
+      checkCookie();
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function checkCookie() {
+        var user = getCookie("id");
+        if (user != "") {
+          //document.getElementById("status").innerHTML = "Signed In";
+          document.getElementById("message").innerHTML = "Please select one of the options";
+          document.getElementById("slbutton").style.visibility = "visible";
+          document.getElementById("invbutton").style.visibility = "visible";
+        } else {
+          //document.getElementById("status").innerHTML = "Please Sign In";
+          document.getElementById("message").innerHTML = "Please sign in to continue";
+          document.getElementById("slbutton").style.visibility = "hidden";
+          document.getElementById("invbutton").style.visibility = "hidden";
+        }
+    }
+
+    function startPage() {
+      checkCookie();
+    }
+
+    window.onload = startPage();
+    window.onbeforeunload = signOut();
+    </script>
 
     <!-- Page Content -->
 </body>
