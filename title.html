@@ -105,14 +105,22 @@
       console.log('Image URL: ' + profile.getImageUrl());
       console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-      setCookie("id", profile.getEmail(), 1);
+      var myEmail = profile.getEmail();
 
-      var oldButton = document.getElementById("si");
-      var newButton = document.createElement('span');
-      newButton.id = 'so';
-      newButton.innerHTML = '<a href="#" class="navbar-brand topnav" onclick="signOut()"><i class="fa fa-user fa-fw"></i> <span class="network-name">Sign Out</span></a>';
-      oldButton.parentNode.replaceChild(newButton, oldButton);
-      checkCookie();
+      if (!myEmail.endsWith("@wfu.edu")) {
+        signOut();
+        window.alert("Please use a Wake Forest email account instead. ");
+      }
+      else {
+        setCookie("id", profile.getEmail(), 1);
+
+        var oldButton = document.getElementById("si");
+        var newButton = document.createElement('span');
+        newButton.id = 'so';
+        newButton.innerHTML = '<a href="#" class="navbar-brand topnav" onclick="signOut()"><i class="fa fa-user fa-fw"></i> <span class="network-name">Sign Out</span></a>';
+        oldButton.parentNode.replaceChild(newButton, oldButton);
+        checkCookie();
+      }
     }
 
     function signOut() {
