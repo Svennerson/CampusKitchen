@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="google-signin-client_id" content="360704991299-nc2iqtvguhpgmecn86pukr85m0tf9kkd.apps.googleusercontent.com">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,6 +41,7 @@
                   <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand topnav" href="/home">Home</a>
+              <span id="so" type="hidden"><a href="#" class="navbar-brand topnav" onclick="signOut()"><i class="fa fa-user fa-fw"></i> <span class="network-name">Sign Out</span></a></span>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -65,9 +67,9 @@
                       <h3>Please choose one of the following options</h3>
                       <hr class="intro-divider">
                       <ul class="list-inline intro-social-buttons">
-                          <li>
+                          <!--<li>
                               <a href="/executive/summary" class="btn btn-default btn-lg"><i class="fa fa-keyboard-o fa-fw"></i> <span class="network-name">Summary</span></a>
-                          </li>
+                          </li>-->
                           <li>
                               <a href="/executive/inventory" class="btn btn-default btn-lg"><i class="fa fa-shopping-bag fa-fw"></i> <span class="network-name">Inventory</span></a>
                           </li>
@@ -81,5 +83,60 @@
       </div>
       <!-- /.container -->
   </div>
+
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+
+  <script>
+
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+    document.cookie = "id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    location.reload();
+    checkCookie();
+  }
+
+  function onLoad() {
+    gapi.load('auth2', function() {
+      gapi.auth2.init();
+    });
+  }
+
+  function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+      var expires = "expires="+d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+          }
+      }
+      return "";
+  }
+
+  function checkCookie() {
+      var user = getCookie("id");
+      if (user != "") {
+        document.getElementById("so").style.visibility = "visible";
+      } else {
+        window.location.href = '../home';
+      }
+  }
+  window.onload = checkCookie();
+  //window.onload = onLoad();
+  </script>
+
 </body>
 </html>
