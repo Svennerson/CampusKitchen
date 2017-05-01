@@ -182,6 +182,20 @@ app.get('/shiftleader/safety7',(req,res)=>{
   });
 });
 
+app.get('/shiftleader/safety8',(req,res)=>{
+  var cursor = db.collection('Safety8').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slsafety8.ejs', {records: results});
+  });
+});
+
 app.get('/executive/safety1',(req,res)=>{
   var cursor = db.collection('Safety1').find();
   // console.log(cursor);  // This has too much info
@@ -277,6 +291,20 @@ app.get('/executive/safety7',(req,res)=>{
     console.log(results);
     // Render index.ejs
     res.render('execsafety7.ejs', {records: results});
+  });
+});
+
+app.get('/executive/safety8',(req,res)=>{
+  var cursor = db.collection('Safety7').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('execsafety8.ejs', {records: results});
   });
 });
 
