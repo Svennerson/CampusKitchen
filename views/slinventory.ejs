@@ -93,7 +93,7 @@
                                   <% for(var i=0; i<records.length; i++) {%>
                                     <tr>
                                       <td><form id="<%='form'+i%>" action="/modify" method="POST"><span>
-                                        <input type="text" name="item" id="<%= 'item'+i %>" readonly value="<%= records[i].item %>">
+                                        <input type="text" name="item" id="<%= 'item'+i %>" readonly value{}="<%= records[i].item %>">
                                       </span></td>
                                       <td><span>
                                         <input type="text" name="quantity" id="<%= 'quantity'+i %>" readonly value="<%= records[i].quantity %>">

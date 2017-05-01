@@ -96,49 +96,49 @@
                                       <td>
                                         <div class="form-group">
                                             <label for="Date">Date</label>
-                                            <input type="date" class="form-control" name="date"+i placeholder="">
+                                            <input type="date" class="form-control" name="<%= 'date'+i %>" readonly value="<%= records[i].date %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
                                             <label for="Supervisor">Supervisor</label>
-                                            <input type="supv" class="form-control" name="supv"+i placeholder="Name">
+                                            <input type="supv" class="form-control" name="<%= 'supv'+i %>" readonly value="<%= records[i].supv %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
                                             <label for="Product">Product</label>
-                                            <input type="Meals" class="form-control" name="product"+i placeholder="item">
+                                            <input type="Meals" class="form-control" name="<%= 'product'+i %>" readonly value="<%= records[i].product %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
                                             <label for="Destination">Destination</label>
-                                            <input type="Ind/Cong" class="form-control" name="dest"+i placeholder="">
+                                            <input type="Ind/Cong" class="form-control" name="<%= 'dest'+i %>" readonly value="<%= records[i].dest %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
                                             <label for="OutofCoolTime">Out of Cooler: Time</label>
-                                            <input type="time" class="form-control" name="coolertime"+i placeholder="">
+                                            <input type="time" class="form-control" name="<%= 'coolertime'+i %>" readonly value="<%= records[i].coolertime %>">
                                         </div>
                                       </td>
 
                                       <td>
                                        <div class="form-group">
                                           <label for="OutofCoolTemp">Out of Cooler: Temp</label>
-                                          <input type="temp" class="form-control" name="coolertemp"+i placeholder="">
+                                          <input type="temp" class="form-control" name="<%= 'coolertemp'+i %>" readonly value="<%= records[i].coolertemp %>">
                                         </div>
                                       </td>
 
                                       <td>
                                        <div class="form-group">
                                           <label for="Initials">Initials</label>
-                                          <input type="initials" class="form-control" name="initials"+i placeholder="AA">
+                                          <input type="initials" class="form-control" name="<%= 'initials'+i %>" readonly value="<%= records[i].initials %>">
                                         </div>
                                       </td>
 
@@ -161,13 +161,13 @@
                     <!-- /.panel -->
         </div>
 
-        <form action="/addItem" method="POST">
+        <form action="/addSafety2" method="POST">
               <h4><dt>Add Item:
               <input class="form-control form-control-sm"type="date" placeholder="Date" name="date">
               <input class="form-control form-control-sm"type="text" placeholder="Supervisor" name="supv">
               <input class="form-control form-control-sm"type="text" placeholder="Product" name="product">
               <input class="form-control form-control-sm"type="text" placeholder="Destination" name="dest">
-              <input class="form-control form-control-sm"type="text" placeholder="Out of Cooler: Time" name="coolertime">
+              <input class="form-control form-control-sm"type="time" placeholder="Out of Cooler: Time" name="coolertime">
               <input class="form-control form-control-sm"type="text" placeholder="Out of Cooler: Temp" name="coolertemp">
               <input class="form-control form-control-sm"type="text" placeholder="Initials" name="initials">
               <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
