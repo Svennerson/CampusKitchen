@@ -24,7 +24,7 @@ function responder(req, res) {
   console.log('got a request');
 }
 
-MongoClient.connect('mongodb://campuskitchen:123456@ds113660.mlab.com:13660/campuskitchen',
+MongoClient.connect('mongodb://campuskitchen:prohumanitate@ds113630.mlab.com:13630/campuskitchen',
 (err, database) => {
   if (err)
     return console.log(err);
