@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Campus Kitchen Shift Leader</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/landing-page.css" >
+
+    <!-- DataTables CSS -->
+    <link href="../datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" >
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+  </style>
+
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+      <div class="container topnav">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand topnav" href="/home">Home</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <a href="/about">About</a>
+                  </li>
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
+
+
+
+<div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            D-3: Meal Transportation
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Supervisor</th>
+                                        <th>Meal Destination</th>
+                                        <th>Indiv./Congreg.</th>
+                                        <th>Hot/Cold</th>
+                                        <th>#/Types of Containers</th>
+                                        <th>#/Types of Delivery Bags</th>
+                                        <th>Driver Name</th>
+                                        <th>Driver Cleared</th>
+                                        <th>Passengers</th>
+                                        <th>Equipment Checked Out</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <% for(var i=0; i<records.length; i++) {%>
+                                    <tr>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <label for="Date">Date</label>
+                                            <input type="date" class="form-control" name="date"+i placeholder="">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <label for="Supervisor">Supervisor</label>
+                                            <input type="supv" class="form-control" name="supv"+i placeholder="Name">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <label for="inputDate">Meal Destination</label>
+                                            <input type="Meals" class="form-control" name="mealdest"+i placeholder="Dest">
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="form-group">
+                                            <label for="inputPassword">Indiv./Congreg.</label>
+                                            <input type="Ind/Cong" class="form-control" name="indcong"+i placeholder="Ind/Cong">
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="form-group">
+                                            <label for="inputMeals">Hot/Cold</label>
+                                            <input type="temp" class="form-control" name="inputmeals"+i placeholder="temp">
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="form-group">
+                                          <label for="inputCongregate">#/Types of Containers</label>
+                                          <input type="Conts" class="form-control" name="containers"+i placeholder="#">
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="form-group">
+                                          <label for="inputindiv"> # or Types of Delivery Bags </label>
+                                          <input type="indivnameual" class="form-control" name="deliverybags"+i placeholder="#">
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="form-group">
+                                            <label for="SManager">Driver Name</label>
+                                            <input type="meals" class="form-control" name="drivername"+i placeholder="Name">
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="form-group">
+                                            <label for="NumSpecMeals">Driver Cleared (V)</label>
+                                            <input type="NumSpecMeals" class="form-control" name="drivercleared"+i placeholder="Y/N">
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="form-group">
+                                          <label for="NumSpecMeals">Passenger Names</label>
+                                          <input type="NumSpecMeals" class="form-control" name="passengers"+i placeholder="Name">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                          <label for="Equip"> Equipment Checked out(thermometers/t-shirts/etc.)
+                                          <input type="Equipment" class="form-control" name="equipment"+i placeholder="item">
+                                      </td>
+
+                                      <!--
+                                      <td><span>
+                                        <input type="hidden" name="unique_id" value="<%= records[i]._id %>">
+                                        <button type="button" class="btn btn-primary"id=<%='edit'+i%> onClick="edit(this)">Edit</button></form></span></td>
+                                      <td><span><form id="<%='newReq'+i%>" action="/remove" method="POST">
+                                        <input type="hidden" name="num" value="<%= i %>">
+                                        <button type="button" class="btn btn-danger" id=<%='delete'+i%> onClick="deleteEntry(this)">Delete</button></form></span></td>
+                                      -->
+                                    </tr>
+                                  <% } %>
+                                </tbody>
+                            </table>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+        </div>
+
+        <form action="/addItem" method="POST">
+              <h4><dt>Add Item:
+              <input class="form-control form-control-sm"type="date" placeholder="Date" name="date">
+              <input class="form-control form-control-sm"type="text" placeholder="Supervisor" name="supv">
+              <input class="form-control form-control-sm" type="text" placeholder="Meal Destination" name="mealdest">
+              <input class="form-control form-control-sm"type="text" placeholder="Indiv./Congreg." name="indcong">
+              <input class="form-control form-control-sm"type="text" placeholder="Hot/Cold" name="inputmeals">
+              <input class="form-control form-control-sm"type="text" placeholder="#/Types of Containers" name="containers">
+              <input class="form-control form-control-sm"type="text" placeholder="#/Types of Delivery Bags" name="deliverybags">
+              <input class="form-control form-control-sm"type="text" placeholder="Driver Name" name="drivername">
+              <input class="form-control form-control-sm"type="text" placeholder="Driver Cleared" name="drivercleared">
+              <input class="form-control form-control-sm"type="text" placeholder="Passengers" name="passengers">
+              <input class="form-control form-control-sm"type="text" placeholder="Equipment Checked Out" name="equipment">
+              <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
+
+            </dt></h4>
+        </form>
+
+          <!-- jQuery -->
+          <script src="../jquery/jquery.min.js"></script>
+
+              <!-- DataTables JavaScript -->
+          <script src="../datatables/js/jquery.dataTables.min.js"></script>
+          <script src="../datatables-plugins/dataTables.bootstrap.min.js"></script>
+          <script src="../datatables-responsive/dataTables.responsive.js"></script>
+          <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+          <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
+
+          </script>
+          <script>
+           $(document).ready(function() {
+               $('#dataTables-example').DataTable({
+                   responsive: true
+               });
+           });
+
+               </script>
+</body>
+</html>
