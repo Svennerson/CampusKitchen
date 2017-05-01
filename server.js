@@ -24,6 +24,20 @@ function responder(req, res) {
   console.log('got a request');
 }
 
+MongoClient.connect('mongodb://campuskitchen:123456@ds113660.mlab.com:13660/campuskitchen',
+(err, database) => {
+  if (err)
+    return console.log(err);
+
+  db = database;
+  updateIds((result)=>{
+    console.log(result);
+  });
+
+  console.log('Connected to database and listening...');
+  http.listen(port, portListener);
+});
+
 // Get request to / is given to responder function
 app.get('/', responder);
 
@@ -499,17 +513,16 @@ app.get('/about',  (req,res)=>{
   res.sendFile(__dirname + '/about.html');
 })
 
-<<<<<<< HEAD
 app.get('/home',(req,res)=>{
   res.sendFile(__dirname + '/title.html');
-=======
+})
+
 app.get('/shiftleader/safety',  (req,res)=>{
   res.sendFile(__dirname + '/shiftleader/safety.html');
 })
 
 app.get('/executive/safety',  (req,res)=>{
   res.sendFile(__dirname + '/executive/safety.html');
->>>>>>> master
 })
 
 function portListener() {
@@ -521,20 +534,6 @@ var port = process.env.PORT ||  3000;
 var db;
 
 var ids = new Array();
-
-MongoClient.connect('mongodb://campuskitchen:123456@ds113660.mlab.com:13660/campuskitchen',
-(err, database) => {
-  if (err)
-    return console.log(err);
-
-  db = database;
-  updateIds((result)=>{
-    console.log(result);
-  });
-
-  console.log('Connected to database and listening...');
-  http.listen(port, portListener);
-});
 
 function updateIds(callback) {
   var cursor = db.collection('Inventory').find();
