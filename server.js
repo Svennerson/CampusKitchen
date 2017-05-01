@@ -84,6 +84,104 @@ app.get('/executive/contacts',(req,res)=>{
   });
 });
 
+app.get('/shiftleader/safety1',(req,res)=>{
+  var cursor = db.collection('Safety1').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slsafety1.ejs', {records: results});
+  });
+});
+
+app.get('/shiftleader/safety2',(req,res)=>{
+  var cursor = db.collection('Safety2').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slsafety2.ejs', {records: results});
+  });
+});
+
+app.get('/shiftleader/safety3',(req,res)=>{
+  var cursor = db.collection('Safety3').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slsafety3.ejs', {records: results});
+  });
+});
+
+app.get('/shiftleader/safety4',(req,res)=>{
+  var cursor = db.collection('Safety4').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slsafety4.ejs', {records: results});
+  });
+});
+
+app.get('/shiftleader/safety5',(req,res)=>{
+  var cursor = db.collection('Safety5').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slsafety5.ejs', {records: results});
+  });
+});
+
+app.get('/shiftleader/safety6',(req,res)=>{
+  var cursor = db.collection('Safety6').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slsafety6.ejs', {records: results});
+  });
+});
+
+app.get('/shiftleader/safety7',(req,res)=>{
+  var cursor = db.collection('Safety7').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('slsafety7.ejs', {records: results});
+  });
+});
+
 app.post('/addItem', (req, res) => {
   console.log('got Post/addItem request');
   console.log(req.body);
@@ -96,6 +194,113 @@ app.post('/addItem', (req, res) => {
     console.log('saved to database');
     updateIds();
     res.redirect('/shiftleader/inventory');
+  });
+
+});
+
+});
+
+app.post('/addSafety1', (req, res) => {
+  console.log('got Post/addItem request');
+  console.log(req.body);
+
+  db.collection('Safety1').save(req.body, (err, result) => {
+    if (err) {
+		    return console.log(err);
+      }
+    console.log('saved to database');
+    updateIds();
+    res.redirect('/shiftleader/safety');
+  });
+
+});
+
+app.post('/addSafety2', (req, res) => {
+  console.log('got Post/addItem request');
+  console.log(req.body);
+
+  db.collection('Safety2').save(req.body, (err, result) => {
+    if (err) {
+		    return console.log(err);
+      }
+    console.log('saved to database');
+    updateIds();
+    res.redirect('/shiftleader/safety');
+  });
+
+});
+
+app.post('/addSafety3', (req, res) => {
+  console.log('got Post/addItem request');
+  console.log(req.body);
+
+  db.collection('Inventory').save(req.body, (err, result) => {
+    if (err) {
+		    return console.log(err);
+      }
+    console.log('saved to database');
+    updateIds();
+    res.redirect('/shiftleader/safety');
+  });
+
+});
+
+app.post('/addSafety4', (req, res) => {
+  console.log('got Post/addItem request');
+  console.log(req.body);
+
+  db.collection('Safety4').save(req.body, (err, result) => {
+    if (err) {
+		    return console.log(err);
+      }
+    console.log('saved to database');
+    updateIds();
+    res.redirect('/shiftleader/safety');
+  });
+
+});
+
+app.post('/addSafety5', (req, res) => {
+  console.log('got Post/addItem request');
+  console.log(req.body);
+
+  db.collection('Safety5').save(req.body, (err, result) => {
+    if (err) {
+		    return console.log(err);
+      }
+    console.log('saved to database');
+    updateIds();
+    res.redirect('/shiftleader/safety');
+  });
+
+});
+
+app.post('/addSafety6', (req, res) => {
+  console.log('got Post/addItem request');
+  console.log(req.body);
+
+  db.collection('Safety6').save(req.body, (err, result) => {
+    if (err) {
+		    return console.log(err);
+      }
+    console.log('saved to database');
+    updateIds();
+    res.redirect('/shiftleader/safety');
+  });
+
+});
+
+app.post('/addSafety7', (req, res) => {
+  console.log('got Post/addItem request');
+  console.log(req.body);
+
+  db.collection('Safety7').save(req.body, (err, result) => {
+    if (err) {
+		    return console.log(err);
+      }
+    console.log('saved to database');
+    updateIds();
+    res.redirect('/shiftleader/safety');
   });
 
 });
