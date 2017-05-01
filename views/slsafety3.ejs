@@ -99,71 +99,60 @@
 
                                       <td>
                                         <div class="form-group">
-                                            <label for="Date">Date</label>
-                                            <input type="date" class="form-control" name="date"+i placeholder="">
+                                            <input type="date" class="form-control" name="<%= 'date'+i %>" readonly value="<%= records[i].date %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                            <label for="Supervisor">Supervisor</label>
-                                            <input type="supv" class="form-control" name="supv"+i placeholder="Name">
+                                            <input type="supv" class="form-control" name="<%= 'supv'+i %>" readonly value="<%= records[i].supv %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                            <label for="inputDate">Meal Destination</label>
-                                            <input type="Meals" class="form-control" name="mealdest"+i placeholder="Dest">
+                                            <input type="Meals" class="form-control" name="<%= 'mealdest'+i %>" readonly value="<%= records[i].mealdest %>">
                                         </div>
                                       </td>
                                       <td>
                                         <div class="form-group">
-                                            <label for="inputPassword">Indiv./Congreg.</label>
-                                            <input type="Ind/Cong" class="form-control" name="indcong"+i placeholder="Ind/Cong">
+                                            <input type="Ind/Cong" class="form-control" name="<%= 'indcong'+i %>" readonly value="<%= records[i].indcong %>">
                                         </div>
                                       </td>
                                       <td>
                                         <div class="form-group">
-                                            <label for="inputMeals">Hot/Cold</label>
-                                            <input type="temp" class="form-control" name="inputmeals"+i placeholder="temp">
+                                            <input type="temp" class="form-control" name="<%= 'inputmeals'+i %>" readonly value="<%= records[i].inputmeals %>">
                                         </div>
                                       </td>
                                       <td>
                                         <div class="form-group">
-                                          <label for="inputCongregate">#/Types of Containers</label>
-                                          <input type="Conts" class="form-control" name="containers"+i placeholder="#">
+                                          <input type="Conts" class="form-control" name="<%= 'containers'+i %>" readonly value="<%= records[i].containers %>">
                                         </div>
                                       </td>
                                       <td>
                                         <div class="form-group">
-                                          <label for="inputindiv"> # or Types of Delivery Bags </label>
-                                          <input type="indivnameual" class="form-control" name="deliverybags"+i placeholder="#">
+                                          <input type="indivnameual" class="form-control" name="<%= 'deliverybags'+i %>" readonly value="<%= records[i].deliverybags %>">
                                         </div>
                                       </td>
                                       <td>
                                         <div class="form-group">
-                                            <label for="SManager">Driver Name</label>
-                                            <input type="meals" class="form-control" name="drivername"+i placeholder="Name">
+                                            <input type="meals" class="form-control" name="<%= 'drivername'+i %>" readonly value="<%= records[i].drivername %>">
                                         </div>
                                       </td>
                                       <td>
                                         <div class="form-group">
-                                            <label for="NumSpecMeals">Driver Cleared (V)</label>
-                                            <input type="NumSpecMeals" class="form-control" name="drivercleared"+i placeholder="Y/N">
+                                            <input type="NumSpecMeals" class="form-control" name="<%= 'drivercleared'+i %>" readonly value="<%= records[i].drivercleared %>">
                                         </div>
                                       </td>
                                       <td>
                                         <div class="form-group">
-                                          <label for="NumSpecMeals">Passenger Names</label>
-                                          <input type="NumSpecMeals" class="form-control" name="passengers"+i placeholder="Name">
+                                          <input type="NumSpecMeals" class="form-control" name="<%= 'passengers'+i %>" readonly value="<%= records[i].passengers %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                          <label for="Equip"> Equipment Checked out(thermometers/t-shirts/etc.)
-                                          <input type="Equipment" class="form-control" name="equipment"+i placeholder="item">
+                                          <input type="Equipment" class="form-control" name="<%= 'equipment'+i %>" readonly value="<%= records[i].equipment %>">
                                       </td>
 
                                       <!--
@@ -185,7 +174,7 @@
                     <!-- /.panel -->
         </div>
 
-        <form action="/addItem" method="POST">
+        <form action="/addSafety3" method="POST">
               <h4><dt>Add Item:
               <input class="form-control form-control-sm"type="date" placeholder="Date" name="date">
               <input class="form-control form-control-sm"type="text" placeholder="Supervisor" name="supv">
