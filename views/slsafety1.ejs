@@ -73,26 +73,23 @@
 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            D-4: HACCP Delivery Shift - Onsite
+                            D-2: HAACCP Delivery Shifts - In the Kitchen
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>Supervisor</th>
-                                        <th>Volunteer</th>
+                                        <th>Today's Date</th>
+                                        <th>Shift Hours</th>
                                         <th>Product</th>
-                                        <th>Arrival Time</th>
-                                        <th>Arrival Temp</th>
-                                        <th>Heating Time I</th>
-                                        <th>Heating Temp I</th>
-                                        <th>Hot Holding Time I</th>
-                                        <th>Hot Holding Temp I</th>
-                                        <th>Serving Time</th>
-                                        <th>Serving Temp</th>
-                                        <th>Initials</th>
+                                        <th># of Regular Meals Delivered</th>
+                                        <th>Congregate</th>
+                                        <th>Individual</th>
+                                        <th>Shift Manager</th>
+                                        <th>Number of Special Meals Delivered</th>
+                                        <th>Number of Regular Volunteers</th>
+                                        <th>Number of Special Volunteers</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -107,65 +104,50 @@
 
                                       <td>
                                         <div class="form-group">
-                                            <input type="supv" class="form-control" name="<%= 'supv'+i %>" readonly value="<%= records[i].supv %>">
+                                            <input type="shifthrs" class="form-control" name="<%= 'shifthrs'+i %>" readonly value="<%= records[i].shifthrs %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                            <input type="name" class="form-control" name="<%= 'volname'+i %>" readonly value="<%= records[i].volname %>">
+                                            <input type="NumRegMeals" class="form-control" name="<%= 'NumRegMeals'+i %>" readonly value="<%= records[i].NumRegMeals %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                            <input type="product" class="form-control" name="<%= 'product'+i %>" readonly value="<%= records[i].product %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                            <input type="arrtime" class="form-control" name="<%= 'arrtime'+i %>"readonly value="<%= records[i].arrtime %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                            <input type="arrtemp" class="form-control" name="<%= 'arrtemp'+i %>" readonly value="<%= records[i].arrtemp %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                          <input type="heattime" class="form-control" name="<%= 'heattime'+i %>"+ readonly value="<%= records[i].heattime %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                          <input type="heattemp" class="form-control" name="<%= 'heattemp'+i %>" readonly value="<%= records[i].heattemp %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                            <input type="hholtime" class="form-control" name="<%= 'hholtime'+i %>" readonly value="<%= records[i].hholtime %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                            <input type="hholtemp" class="form-control" name="<%= 'hholtemp'+i %>" readonly value="<%= records[i].hholtemp %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                          <input type="servetime" class="form-control" name="<%= 'servetime'+i %>" readonly value="<%= records[i].servetime %>">
+                                            <input type="cong" class="form-control" name="<%= 'cong'+i %>" readonly value="<%= records[i].cong %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                          <input type="servetemp" class="form-control" name="<%= 'servetemp'+i %>" readonly value="<%= records[i].servetemp %>">
+                                            <input type="ind" class="form-control" name="<%= 'ind'+i %>" readonly value="<%= records[i].ind %>">
+                                        </div>
                                       </td>
 
                                       <td>
-                                        <div class="form-group">
-                                          <input type="initials" class="form-control" name="<%= 'initials'+i %>" readonly value="<%= records[i].initials %>">
+                                       <div class="form-group">
+                                          <input type="shiftman" class="form-control" name="<%= 'shiftman'+i %>" readonly value="<%= records[i].shiftman %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                       <div class="form-group">
+                                          <input type="NumSpecMeals" class="form-control" name="<%= 'NumSpecMeals'+i %>" readonly value="<%= records[i].NumSpecMeals %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                       <div class="form-group">
+                                          <input type="NumRegVols" class="form-control" name="<%= 'NumRegVols'+i %>" readonly value="<%= records[i].NumRegVols %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                       <div class="form-group">
+                                          <input type="NumSpecVols" class="form-control" name="<%= 'NumSpecVols'+i %>" readonly value="<%= records[i].NumSpecVols %>">
+                                        </div>
                                       </td>
 
                                       <!--
@@ -187,20 +169,19 @@
                     <!-- /.panel -->
         </div>
 
-        <form action="/addSafety4" method="POST">
+        <form action="/addSafety1" method="POST">
               <h4><dt>Add Item:
-              <input class="form-control form-control-sm"type="date" placeholder="Date" name="date">
-              <input class="form-control form-control-sm"type="text" placeholder="Supervisor" name="supv">
-              <input class="form-control form-control-sm"type="text" placeholder="Product" name="product">
-              <input class="form-control form-control-sm"type="time" placeholder="Arrival Time" name="arrtime">
-              <input class="form-control form-control-sm"type="text" placeholder="Arrival Temp" name="arrtemp">
-              <input class="form-control form-control-sm"type="time" placeholder="Heating Time" name="heattime">
-              <input class="form-control form-control-sm"type="text" placeholder="Heating Temp" name="heattemp">
-              <input class="form-control form-control-sm"type="time" placeholder="Hot Holding Time" name="hholtime">
-              <input class="form-control form-control-sm"type="text" placeholder="Hot Holding Temp" name="hholtemp">
-              <input class="form-control form-control-sm"type="time" placeholder="Serving Time" name="servetime">
-              <input class="form-control form-control-sm"type="text" placeholder="Serving Temp" name="servetemp">
-              <input class="form-control form-control-sm"type="text" placeholder="Initials" name="initials">
+              <input class="form-control form-control-sm"type="date" placeholder="Today's Date" name="date">
+              <input class="form-control form-control-sm"type="text" placeholder="Shift Hours" name="shifthrs">
+              <input class="form-control form-control-sm"type="text" placeholder="Number of Regular Meals Delivered" name="NumRegMeals">
+              <input class="form-control form-control-sm"type="text" placeholder="Congregate" name="cong">
+              <input class="form-control form-control-sm"type="text" placeholder="Individual" name="ind">
+              <input class="form-control form-control-sm"type="text" placeholder="Shift Manager" name="shiftman">
+              <input class="form-control form-control-sm"type="text" placeholder="Number of Special Meals Delivered" name="NumSpecMeals">
+              <input class="form-control form-control-sm"type="text" placeholder="Number of Regular Volunteers" name="NumRegVols">
+              <input class="form-control form-control-sm"type="text" placeholder="Number of Special Volunteers" name="NumSpecVols">
+
+
               <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
 
             </dt></h4>

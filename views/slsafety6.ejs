@@ -73,7 +73,7 @@
 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            D-4: HACCP Delivery Shift - Onsite
+                            C-2: Meal Description
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -81,17 +81,20 @@
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Supervisor</th>
-                                        <th>Volunteer</th>
-                                        <th>Product</th>
-                                        <th>Arrival Time</th>
-                                        <th>Arrival Temp</th>
-                                        <th>Heating Time I</th>
-                                        <th>Heating Temp I</th>
-                                        <th>Hot Holding Time I</th>
-                                        <th>Hot Holding Temp I</th>
-                                        <th>Serving Time</th>
-                                        <th>Serving Temp</th>
+                                        <th>Shift Captain</th>
+                                        <th>Meal Destination</th>
+                                        <th>Servings</th>
+                                        <th>Congr/Indiv</th>
+                                        <th>MC1: Protein</th>
+                                        <th>MC1: Starch/Grain</th>
+                                        <th>MC1: Vegetable</th>
+                                        <th>MC1: Fruit/Desert</th>
+                                        <th>MC2: Protein </th>
+                                        <th>MC2: Starch/Grain </th>
+                                        <th>MC2: Vegetable </th>
+                                        <th>MC2: Fruit/Dessert </th>
+                                        <th>Out of Cooler: Time</th>
+                                        <th>Out of Cooler: Temp</th>
                                         <th>Initials</th>
                                     </tr>
                                 </thead>
@@ -105,68 +108,97 @@
                                         </div>
                                       </td>
 
+
                                       <td>
                                         <div class="form-group">
-                                            <input type="supv" class="form-control" name="<%= 'supv'+i %>" readonly value="<%= records[i].supv %>">
+                                            <input type="shifcap" class="form-control" name="<%= 'shifcap'+i %>" readonly value="<%= records[i].shifcap %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                            <input type="name" class="form-control" name="<%= 'volname'+i %>" readonly value="<%= records[i].volname %>">
+                                            <input type="mealdest" class="form-control" name="<%= 'mealdest'+i %>" readonly value="<%= records[i].mealdest %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                            <input type="product" class="form-control" name="<%= 'product'+i %>" readonly value="<%= records[i].product %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                            <input type="arrtime" class="form-control" name="<%= 'arrtime'+i %>"readonly value="<%= records[i].arrtime %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                            <input type="arrtemp" class="form-control" name="<%= 'arrtemp'+i %>" readonly value="<%= records[i].arrtemp %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                          <input type="heattime" class="form-control" name="<%= 'heattime'+i %>"+ readonly value="<%= records[i].heattime %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                          <input type="heattemp" class="form-control" name="<%= 'heattemp'+i %>" readonly value="<%= records[i].heattemp %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                            <input type="hholtime" class="form-control" name="<%= 'hholtime'+i %>" readonly value="<%= records[i].hholtime %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                            <input type="hholtemp" class="form-control" name="<%= 'hholtemp'+i %>" readonly value="<%= records[i].hholtemp %>">
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="form-group">
-                                          <input type="servetime" class="form-control" name="<%= 'servetime'+i %>" readonly value="<%= records[i].servetime %>">
+                                            <input type="servings" class="form-control" name="<%= 'servings'+i %>" readonly value="<%= records[i].servings %>">
                                         </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
-                                          <input type="servetemp" class="form-control" name="<%= 'servetemp'+i %>" readonly value="<%= records[i].servetemp %>">
+                                            <input type="congind" class="form-control" name="<%= 'congind'+i %>" readonly value="<%= records[i].congind %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="mc1prot" class="form-control" name="<%= 'mc1prot'+i %>" readonly value="<%= records[i].mc1prot %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="mc1stgr" class="form-control" name="<%= 'mc1stgr'+i %>" readonly value="<%= records[i].mc1stgr %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="mc1veg" class="form-control" name="<%= 'mc1veg'+i %>" readonly value="<%= records[i].mc1veg %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="mc1frde" class="form-control" name="<%= 'mc1frde'+i %>" readonly value="<%= records[i].mc1frde %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="mc2prot" class="form-control" name="<%= 'mc2prot'+i %>" readonly value="<%= records[i].mc2prot %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="mc2stgr" class="form-control" name="<%= 'mc2stgr'+i %>" readonly value="<%= records[i].mc2stgr %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="mc2veg" class="form-control" name="<%= 'mc2veg'+i %>" readonly value="<%= records[i].mc2veg %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="mc2frde" class="form-control" name="<%= 'mc2frde'+i %>" readonly value="<%= records[i].mc2frde %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="ooctime" class="form-control" name="<%= 'ooctime'+i %>" readonly value="<%= records[i].ooctime %>">
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-group">
+                                            <input type="ooctemp" class="form-control" name="<%= 'ooctemp'+i %>" readonly value="<%= records[i].ooctemp %>">
+                                        </div>
                                       </td>
 
                                       <td>
                                         <div class="form-group">
                                           <input type="initials" class="form-control" name="<%= 'initials'+i %>" readonly value="<%= records[i].initials %>">
                                       </td>
+
+
 
                                       <!--
                                       <td><span>
@@ -187,20 +219,26 @@
                     <!-- /.panel -->
         </div>
 
-        <form action="/addSafety4" method="POST">
+        <form action="/addSafety6" method="POST">
               <h4><dt>Add Item:
               <input class="form-control form-control-sm"type="date" placeholder="Date" name="date">
-              <input class="form-control form-control-sm"type="text" placeholder="Supervisor" name="supv">
-              <input class="form-control form-control-sm"type="text" placeholder="Product" name="product">
-              <input class="form-control form-control-sm"type="time" placeholder="Arrival Time" name="arrtime">
-              <input class="form-control form-control-sm"type="text" placeholder="Arrival Temp" name="arrtemp">
-              <input class="form-control form-control-sm"type="time" placeholder="Heating Time" name="heattime">
-              <input class="form-control form-control-sm"type="text" placeholder="Heating Temp" name="heattemp">
-              <input class="form-control form-control-sm"type="time" placeholder="Hot Holding Time" name="hholtime">
-              <input class="form-control form-control-sm"type="text" placeholder="Hot Holding Temp" name="hholtemp">
-              <input class="form-control form-control-sm"type="time" placeholder="Serving Time" name="servetime">
-              <input class="form-control form-control-sm"type="text" placeholder="Serving Temp" name="servetemp">
+              <input class="form-control form-control-sm"type="text" placeholder="Shift Captain" name="shifcap">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Destination" name="mealdest">
+              <input class="form-control form-control-sm"type="text" placeholder="Servings" name="servings">
+              <input class="form-control form-control-sm"type="text" placeholder="Congr/Indiv" name="congind">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Combo 1: Protein" name="mc1prot">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Combo 1: Starch/Grain" name="mc1stgr">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Combo 1: Vegetable" name="mc1veg">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Combo 1: Fruit/Dessert" name="mc1frde">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Combo 2: Protein" name="mc2prot">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Combo 2: Starch/Grain" name="mc2stgr">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Combo 2: Vegetable" name="mc2veg">
+              <input class="form-control form-control-sm"type="text" placeholder="Meal Combo 2: Fruit/Dessert" name="mc2frde">
+              <input class="form-control form-control-sm"type="text" placeholder="Out of Cooler: Time" name="ooctime">
+              <input class="form-control form-control-sm"type="text" placeholder="Out of Cooler: Temp" name="ooctemp">
               <input class="form-control form-control-sm"type="text" placeholder="Initials" name="initials">
+
+
               <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
 
             </dt></h4>
