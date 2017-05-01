@@ -295,7 +295,7 @@ app.get('/executive/safety7',(req,res)=>{
 });
 
 app.get('/executive/safety8',(req,res)=>{
-  var cursor = db.collection('Safety7').find();
+  var cursor = db.collection('Safety8').find();
   // console.log(cursor);  // This has too much info
   // convert to an array to extract the movie data
   cursor.toArray(function (err, results) {
@@ -428,6 +428,22 @@ app.post('/addSafety7', (req, res) => {
   });
 
 });
+
+app.post('/addSafety8', (req, res) => {
+  console.log('got Post/addItem request');
+  console.log(req.body);
+
+  db.collection('Safety8').save(req.body, (err, result) => {
+    if (err) {
+        return console.log(err);
+      }
+    console.log('saved to database');
+    updateIds();
+    res.redirect('/shiftleader/safety');
+  });
+
+});
+
 
 app.post('/modify', (req, res) => {
   console.log('got Post /modify request');
