@@ -182,6 +182,104 @@ app.get('/shiftleader/safety7',(req,res)=>{
   });
 });
 
+app.get('/executive/safety1',(req,res)=>{
+  var cursor = db.collection('Safety1').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('execsafety1.ejs', {records: results});
+  });
+});
+
+app.get('/executive/safety2',(req,res)=>{
+  var cursor = db.collection('Safety2').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('execsafety2.ejs', {records: results});
+  });
+});
+
+app.get('/executive/safety3',(req,res)=>{
+  var cursor = db.collection('Safety3').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('execsafety3.ejs', {records: results});
+  });
+});
+
+app.get('/executive/safety4',(req,res)=>{
+  var cursor = db.collection('Safety4').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('execsafety4.ejs', {records: results});
+  });
+});
+
+app.get('/executive/safety5',(req,res)=>{
+  var cursor = db.collection('Safety5').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('execsafety5.ejs', {records: results});
+  });
+});
+
+app.get('/executive/safety6',(req,res)=>{
+  var cursor = db.collection('Safety6').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('execsafety6.ejs', {records: results});
+  });
+});
+
+app.get('/executive/safety7',(req,res)=>{
+  var cursor = db.collection('Safety7').find();
+  // console.log(cursor);  // This has too much info
+  // convert to an array to extract the movie data
+  cursor.toArray(function (err, results) {
+    if (err)
+      return console.log(err);
+
+    console.log(results);
+    // Render index.ejs
+    res.render('execsafety7.ejs', {records: results});
+  });
+});
+
 app.post('/addItem', (req, res) => {
   console.log('got Post/addItem request');
   console.log(req.body);
@@ -195,8 +293,6 @@ app.post('/addItem', (req, res) => {
     updateIds();
     res.redirect('/shiftleader/inventory');
   });
-
-});
 
 });
 
@@ -357,6 +453,14 @@ app.get('/executive',(req,res)=>{
 
 app.get('/about',  (req,res)=>{
   res.sendFile(__dirname + '/about.html');
+})
+
+app.get('/shiftleader/safety',  (req,res)=>{
+  res.sendFile(__dirname + '/shiftleader/safety.html');
+})
+
+app.get('/executive/safety',  (req,res)=>{
+  res.sendFile(__dirname + '/executive/safety.html');
 })
 
 function portListener() {
